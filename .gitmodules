@@ -1,3 +1,6 @@
 [submodule "framework"]
 	path = framework
 	url = git@github.com:MasLazu/MasLazu.AspNet.Framework.git
+[submodule "utilities/MasLazu.AspNet.EmailSender"]
+	path = utilities/MasLazu.AspNet.EmailSender
+	url = git@github.com:MasLazu/MasLazu.AspNet.EmailSender.git
