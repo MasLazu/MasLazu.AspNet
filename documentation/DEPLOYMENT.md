@@ -46,7 +46,7 @@ The GitHub Actions workflow (`.github/workflows/deploy-docs.yml`) triggers on:
 1. **Build Stage**:
 
    - Checkout repository code
-   - Setup Node.js 20 with npm cache
+   - Setup Node.js 20 with npm cache (using documentation/package-lock.json)
    - Install dependencies with `npm ci`
    - Build documentation with `npm run build`
    - Upload build artifacts
