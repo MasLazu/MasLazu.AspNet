@@ -2,6 +2,11 @@
 
 A comprehensive collection of modern ASP.NET Core libraries and modules designed to accelerate enterprise application development with clean architecture principles.
 
+[![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue?style=flat-square&logo=github)](https://maslazu.github.io/MasLazu.AspNet/)
+[![Deploy Documentation](https://github.com/MasLazu/MasLazu.AspNet/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/MasLazu/MasLazu.AspNet/actions/workflows/deploy-docs.yml)
+
+> 📖 **[Visit our comprehensive documentation](https://maslazu.github.io/MasLazu.AspNet/)** for detailed guides, API references, and examples.
+
 ## 🚀 Overview
 
 MasLazu.AspNet is a modular ecosystem that provides everything you need to build scalable, maintainable, and secure web applications. From foundational frameworks to specialized modules for authentication, authorization, and communication.
@@ -279,6 +284,10 @@ app.Run();
 - [ ] Monitoring and observability
 
 ## 📚 Documentation
+
+### 📖 **[Complete Documentation](https://maslazu.github.io/MasLazu.AspNet/)**
+
+**Visit our comprehensive Docusaurus documentation site for the full guides, API references, and examples.**
 
 ### Framework Components
 
