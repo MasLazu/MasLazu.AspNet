@@ -4,3 +4,6 @@
 [submodule "utilities/MasLazu.AspNet.EmailSender"]
 	path = utilities/MasLazu.AspNet.EmailSender
 	url = git@github.com:MasLazu/MasLazu.AspNet.EmailSender.git
+[submodule "modules/MasLazu.AspNet.Verification"]
+	path = modules/MasLazu.AspNet.Verification
+	url = git@github.com:MasLazu/MasLazu.AspNet.Verification.git
