@@ -7,3 +7,6 @@
 [submodule "modules/MasLazu.AspNet.Verification"]
 	path = modules/MasLazu.AspNet.Verification
 	url = git@github.com:MasLazu/MasLazu.AspNet.Verification.git
+[submodule "modules/MasLazu.AspNet.Authentication.Core"]
+	path = modules/MasLazu.AspNet.Authentication.Core
+	url = git@github.com:MasLazu/MasLazu.AspNet.Authentication.Core.git
