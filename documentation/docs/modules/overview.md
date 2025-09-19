@@ -2,60 +2,74 @@
 
 MasLazu.AspNet modules provide feature-complete implementations for common application requirements. Each module follows clean architecture principles and can be used independently or together.
 
-## Available Modules
+## 🧩 Available Modules
 
-### 🔐 Authentication Core
+### **Authentication.Core**
 
-**Status**: ✅ Production Ready  
-**Purpose**: Comprehensive authentication and user management system
-
-A complete authentication system with JWT tokens, user management, and security features.
+A comprehensive JWT-based authentication system with user registration, login, and token management.
 
 **Key Features:**
 
-- JWT-based authentication with access and refresh tokens
-- User registration, login, and profile management
-- Multi-method login support (email, username, phone)
-- Password reset and email verification workflows
-- Role-based authorization system
-- Audit logging and security tracking
+- JWT token generation and validation
+- User registration and login
+- Role-based access control
+- Token refresh mechanisms
+- Clean architecture implementation
 
-**Packages:**
+**Package:** `MasLazu.AspNet.Authentication.Core`  
+**Documentation:** [Authentication.Core →](./authentication-core.md)
 
-- `MasLazu.AspNet.Authentication.Core.Abstraction` - Interfaces and contracts
-- `MasLazu.AspNet.Authentication.Core.Domain` - Domain entities and business rules
-- `MasLazu.AspNet.Authentication.Core.Base` - Service implementations
-- `MasLazu.AspNet.Authentication.Core.EfCore` - Data access layer
-- `MasLazu.AspNet.Authentication.Core.Endpoint` - API endpoints
-- `MasLazu.AspNet.Authentication.Core.Consumer` - Event-driven processing
+---
 
-[**Learn More →**](./authentication/overview.md)
+### **Authentication.Password**
 
-### ✅ Verification
-
-**Status**: ✅ Production Ready  
-**Purpose**: Multi-channel verification system for user verification codes
-
-A flexible verification system supporting email, SMS, and other verification channels with purpose-based workflows.
+A secure password-based authentication system with BCrypt hashing and comprehensive user management.
 
 **Key Features:**
 
-- Multi-channel support (Email, SMS, extensible)
-- Purpose-based verification (registration, password reset, etc.)
-- Configurable expiration times and attempt limits
-- HTML email templates with theming support
-- Async processing and rate limiting
-- Comprehensive validation and security
+- Secure password authentication with BCrypt
+- User registration and login
+- Password policy enforcement
+- Account lockout and security features
+- Email verification integration
+- Clean architecture implementation
 
-**Packages:**
+**Package:** `MasLazu.AspNet.Authentication.Password`  
+**Documentation:** [Authentication.Password →](./authentication-password.md)
 
-- `MasLazu.AspNet.Verification.Abstraction` - Core interfaces and models
-- `MasLazu.AspNet.Verification.Domain` - Domain entities and business rules
-- `MasLazu.AspNet.Verification` - Application services and logic
-- `MasLazu.AspNet.Verification.EfCore` - Entity Framework implementation
-- `MasLazu.AspNet.Verification.Endpoint` - API endpoints
+---
 
-[**Learn More →**](./verification/overview.md)
+### **Verification**
+
+A flexible and secure verification system for email and SMS-based account verification workflows.
+
+**Key Features:**
+
+- Email verification with customizable templates
+- SMS verification support
+- Configurable verification codes
+- Expiration and retry logic
+- Multi-provider support
+
+**Package:** `MasLazu.AspNet.Verification`  
+**Documentation:** [Verification →](./verification.md)
+
+## 📊 Module Comparison
+
+| Feature                | Authentication.Core | Authentication.Password | Verification         |
+| ---------------------- | ------------------- | ----------------------- | -------------------- |
+| **Primary Purpose**    | JWT-based auth      | Password-based auth     | Account verification |
+| **Authentication**     | JWT tokens          | Password + BCrypt       | Verification codes   |
+| **User Management**    | ✅ Basic            | ✅ Comprehensive        | ❌                   |
+| **Password Security**  | ❌                  | ✅ BCrypt + Policies    | ❌                   |
+| **Email Integration**  | ❌                  | ✅ Optional             | ✅ Required          |
+| **SMS Support**        | ❌                  | ❌                      | ✅                   |
+| **Role Management**    | ✅                  | ❌                      | ❌                   |
+| **Session Management** | ✅ JWT              | ✅ Database             | ❌                   |
+| **Account Lockout**    | ❌                  | ✅                      | ❌                   |
+| **Clean Architecture** | ✅                  | ✅                      | ✅                   |
+| **Database Required**  | ✅                  | ✅                      | ✅                   |
+| **Best For**           | API authentication  | Web applications        | Account verification |
 
 ## Module Architecture
 
