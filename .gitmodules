@@ -10,3 +10,6 @@
 [submodule "modules/MasLazu.AspNet.Authentication.Core"]
 	path = modules/MasLazu.AspNet.Authentication.Core
 	url = git@github.com:MasLazu/MasLazu.AspNet.Authentication.Core.git
+[submodule "modules/MasLazu.AspNet.Authentication.Password"]
+	path = modules/MasLazu.AspNet.Authentication.Password
+	url = git@github.com:MasLazu/MasLazu.AspNet.Authentication.Password.git
