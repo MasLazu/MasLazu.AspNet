@@ -30,13 +30,11 @@ MasLazu.AspNet/
 │           ├── MasLazu.AspNet.EmailSender.Abstraction/
 │           ├── MasLazu.AspNet.EmailSender.Gmail/
 │           └── MasLazu.AspNet.EmailSender.SendGrid/
-└── modules/                            # Feature Modules (Coming Soon)
-    ├── Authentication/
-    ├── Authorization/
-    ├── API Key Management/
-    ├── OAuth/
-    ├── Profile Management/
-    └── Verification/
+└── modules/                            # Feature Modules
+    ├── MasLazu.AspNet.Authentication.Core/
+    ├── MasLazu.AspNet.Authentication.Password/
+    ├── MasLazu.AspNet.Authorization.Core/
+    └── MasLazu.AspNet.Verification/
 ```
 
 ## 🏗️ Core Components
@@ -78,13 +76,39 @@ A comprehensive multi-provider email sending library with beautiful HTML templat
 
 [📖 Email Sender Documentation](utilities/MasLazu.AspNet.EmailSender/README.md)
 
-## 🔮 Coming Soon: Modular System
+### 🛡️ Authorization Core
 
-The upcoming modules system will provide a comprehensive set of pre-built features for enterprise applications:
+**Location**: `/modules/MasLazu.AspNet.Authorization.Core/`  
+**Status**: ✅ Production Ready
+
+A comprehensive, modular authorization system built with .NET 9, designed to provide flexible and scalable access control for ASP.NET Core applications.
+
+**Key Features:**
+
+- Resource-action based permissions with flexible permission types
+- Hierarchical resource management with action-based access control
+- Entity Framework Core integration with clean architecture
+- FastEndpoints API with comprehensive validation
+- Extensive test coverage (54+ unit tests)
+- Centralized package management with consistent dependencies
+
+**Core Components:**
+
+- **Actions**: System operations (READ, WRITE, DELETE)
+- **Permissions**: Combine actions with resources and types
+- **Permission Types**: Categorize permissions (SYSTEM, USER)
+- **Resources**: Protected entities or features
+- **Resource Actions**: Link resources to available actions
+
+[📖 Authorization Core Documentation](modules/MasLazu.AspNet.Authorization.Core/README.md)
+
+## 🔮 Available Modules
+
+The modular system provides a comprehensive set of pre-built features for enterprise applications:
 
 ### 🔐 Authentication Modules
 
-#### Authentication Core
+#### Authentication Core ✅ **Available**
 
 - User management with comprehensive profile support
 - Multi-language and timezone support
@@ -92,14 +116,14 @@ The upcoming modules system will provide a comprehensive set of pre-built featur
 - JWT-based authentication with refresh tokens
 - User login method tracking
 
-#### Password Authentication
+#### Password Authentication ✅ **Available**
 
 - Secure password hashing and validation
 - Password complexity requirements
 - Password change and reset functionality
 - Account lockout and security policies
 
-#### OpenID Connect Authentication
+#### OpenID Connect Authentication 🚧 **Coming Soon**
 
 - OAuth 2.0 and OpenID Connect integration
 - Support for multiple identity providers
@@ -108,43 +132,28 @@ The upcoming modules system will provide a comprehensive set of pre-built featur
 
 ### 🛡️ Authorization Modules
 
-#### Core Authorization
+#### Core Authorization ✅ **Available**
 
 - Resource-action based permissions
 - Flexible permission type system
 - Hierarchical resource management
 - Action-based access control
 
-#### Role-Based Access Control (RBAC)
+#### Role-Based Access Control (RBAC) 🚧 **Coming Soon**
 
 - Role management with inheritance
 - User-role assignments
 - Role-permission mappings
 - Dynamic permission evaluation
 
-#### Page-Based Authorization
+#### Page-Based Authorization 🚧 **Coming Soon**
 
 - UI-level access control
 - Page grouping and organization
 - Page-specific permission management
 - Navigation security
 
-### 🔑 API Key Management
-
-- API key generation and management
-- Scope-based access control
-- Usage tracking and analytics
-- Key rotation and security policies
-
-### 🌐 OAuth Server
-
-- Full OAuth 2.0 server implementation
-- Authorization code flow support
-- Client application management
-- Scope-based access control
-- User consent management
-
-### ✅ Verification System
+### ✅ Verification System ✅ **Available**
 
 - Multi-channel verification (Email, SMS)
 - Verification purpose management
@@ -152,7 +161,22 @@ The upcoming modules system will provide a comprehensive set of pre-built featur
 - Verification status tracking
 - Event-driven verification completion
 
-### 👤 Profile Management
+### 🔑 API Key Management 🚧 **Coming Soon**
+
+- API key generation and management
+- Scope-based access control
+- Usage tracking and analytics
+- Key rotation and security policies
+
+### 🌐 OAuth Server 🚧 **Coming Soon**
+
+- Full OAuth 2.0 server implementation
+- Authorization code flow support
+- Client application management
+- Scope-based access control
+- User consent management
+
+### 👤 Profile Management 🚧 **Coming Soon**
 
 - User profile data management
 - Profile authorization and privacy
@@ -213,6 +237,10 @@ dotnet build
 # For email functionality
 cd ../utilities/MasLazu.AspNet.EmailSender
 dotnet build
+
+# For authorization functionality
+cd ../modules/MasLazu.AspNet.Authorization.Core
+dotnet build
 ```
 
 3. **Add to your project:**
@@ -221,6 +249,7 @@ dotnet build
 <PackageReference Include="MasLazu.AspNet.Framework.Application" Version="1.0.0" />
 <PackageReference Include="MasLazu.AspNet.Framework.EfCore.Postgresql" Version="1.0.0" />
 <PackageReference Include="MasLazu.AspNet.EmailSender.Gmail" Version="1.0.0" />
+<PackageReference Include="MasLazu.AspNet.Authorization.Core" Version="1.0.0" />
 ```
 
 4. **Configure services:**
@@ -240,6 +269,10 @@ builder.Services.AddFrameworkEfCorePostgresql(
 // Add email services
 builder.Services.AddGmailEmailSender(builder.Configuration);
 
+// Add authorization services
+builder.Services.AddAuthorizationCoreApplicationServices();
+builder.Services.AddAuthorizationCoreEntityFrameworkCore();
+
 var app = builder.Build();
 
 // Configure pipeline
@@ -258,12 +291,13 @@ app.Run();
 
 ### Phase 2: Authentication & Authorization (In Progress 🚧)
 
-- [ ] Authentication Core module
-- [ ] Password Authentication module
+- [x] Authentication Core module
+- [x] Password Authentication module
 - [ ] OpenID Connect module
-- [ ] Core Authorization module
+- [x] Core Authorization module
 - [ ] RBAC module
 - [ ] Page-based Authorization module
+- [x] Verification System module
 
 ### Phase 3: Advanced Features (Planned 📋)
 
@@ -303,6 +337,12 @@ app.Run();
 - [Email Sender](utilities/MasLazu.AspNet.EmailSender/README.md) - Multi-provider email system
 - [Gmail Provider](utilities/MasLazu.AspNet.EmailSender/src/MasLazu.AspNet.EmailSender.Gmail/README.md)
 - [SendGrid Provider](utilities/MasLazu.AspNet.EmailSender/src/MasLazu.AspNet.EmailSender.SendGrid/README.md)
+
+### Modules
+
+- [Authentication Core](modules/MasLazu.AspNet.Authentication.Core/README.md) - Complete authentication system
+- [Authorization Core](modules/MasLazu.AspNet.Authorization.Core/README.md) - Flexible authorization system
+- [Verification System](modules/MasLazu.AspNet.Verification/README.md) - Email/SMS verification
 
 ### Guides
 

@@ -15,55 +15,47 @@ import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
 const sidebars: SidebarsConfig = {
   // Main documentation sidebar
   tutorialSidebar: [
-    'intro',
+    "intro",
     {
-      type: 'category',
-      label: 'Getting Started',
+      type: "category",
+      label: "Getting Started",
+      collapsed: false,
+      items: ["getting-started/installation", "getting-started/first-api"],
+    },
+    {
+      type: "category",
+      label: "Framework",
       collapsed: false,
       items: [
-        'getting-started/installation',
-        'getting-started/first-api',
+        "framework/overview",
+        "framework/domain",
+        "framework/application",
+        "framework/efcore",
       ],
     },
     {
-      type: 'category',
-      label: 'Framework',
+      type: "category",
+      label: "Modules",
       collapsed: false,
       items: [
-        'framework/overview',
-        'framework/domain',
-        'framework/application',
-        'framework/efcore',
+        "modules/overview",
+        "modules/authentication-core",
+        "modules/authentication-password",
+        "modules/authorization-core",
+        "modules/verification",
       ],
     },
     {
-      type: 'category',
-      label: 'Modules',
+      type: "category",
+      label: "Utilities",
       collapsed: false,
-      items: [
-        'modules/overview',
-        'modules/authentication-core',
-        'modules/authentication-password',
-        'modules/authorization-core',
-        'modules/verification',
-      ],
+      items: ["utilities/overview", "utilities/emailsender"],
     },
     {
-      type: 'category',
-      label: 'Utilities',
+      type: "category",
+      label: "Examples",
       collapsed: false,
-      items: [
-        'utilities/overview',
-        'utilities/emailsender',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Examples',
-      collapsed: false,
-      items: [
-        'examples/overview',
-      ],
+      items: ["examples/overview"],
     },
   ],
 };
