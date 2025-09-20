@@ -16,3 +16,6 @@
 [submodule "modules/MasLazu.AspNet.Authorization.Core"]
 	path = modules/MasLazu.AspNet.Authorization.Core
 	url = git@github.com:MasLazu/MasLazu.AspNet.Authorization.Core.git
+[submodule "modules/MasLazu.AspNet.Authorization.Rbac"]
+	path = modules/MasLazu.AspNet.Authorization.Rbac
+	url = git@github.com:MasLazu/MasLazu.AspNet.Authorization.Rbac.git
