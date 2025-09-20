@@ -34,6 +34,7 @@ MasLazu.AspNet/
     ├── MasLazu.AspNet.Authentication.Core/
     ├── MasLazu.AspNet.Authentication.Password/
     ├── MasLazu.AspNet.Authorization.Core/
+    ├── MasLazu.AspNet.Authorization.Rbac/
     └── MasLazu.AspNet.Verification/
 ```
 
@@ -139,12 +140,33 @@ The modular system provides a comprehensive set of pre-built features for enterp
 - Hierarchical resource management
 - Action-based access control
 
-#### Role-Based Access Control (RBAC) 🚧 **Coming Soon**
+#### Role-Based Access Control (RBAC) ✅ **Available**
 
-- Role management with inheritance
-- User-role assignments
-- Role-permission mappings
-- Dynamic permission evaluation
+**Location**: `/modules/MasLazu.AspNet.Authorization.Rbac/`  
+**Status**: ✅ Production Ready
+
+A comprehensive Role-Based Access Control (RBAC) system that extends the Authorization Core with role management capabilities. Built with .NET 9 and following clean architecture principles.
+
+**Key Features:**
+
+- Complete role lifecycle management (CRUD operations)
+- Role-permission assignment and management
+- User-role assignment with validation
+- FluentValidation for comprehensive request validation
+- Entity Framework Core integration with clean architecture
+- FastEndpoints API with high-performance endpoints
+- Comprehensive test coverage with xUnit
+- Integration with Authorization.Core for permission validation
+
+**Core Components:**
+
+- **Roles**: Named collections of permissions with descriptions
+- **Role Permissions**: Link roles to specific permissions from Authorization.Core
+- **User Roles**: Assign roles to users with audit tracking
+- **CRUD Services**: Complete role and assignment management
+- **Validation**: FluentValidation for all operations
+
+[📖 Authorization RBAC Documentation](modules/MasLazu.AspNet.Authorization.Rbac/README.md)
 
 #### Page-Based Authorization 🚧 **Coming Soon**
 
@@ -295,7 +317,7 @@ app.Run();
 - [x] Password Authentication module
 - [ ] OpenID Connect module
 - [x] Core Authorization module
-- [ ] RBAC module
+- [x] RBAC module
 - [ ] Page-based Authorization module
 - [x] Verification System module
 
@@ -342,6 +364,7 @@ app.Run();
 
 - [Authentication Core](modules/MasLazu.AspNet.Authentication.Core/README.md) - Complete authentication system
 - [Authorization Core](modules/MasLazu.AspNet.Authorization.Core/README.md) - Flexible authorization system
+- [Authorization RBAC](modules/MasLazu.AspNet.Authorization.Rbac/README.md) - Role-based access control system
 - [Verification System](modules/MasLazu.AspNet.Verification/README.md) - Email/SMS verification
 
 ### Guides
