@@ -57,6 +57,24 @@ A comprehensive, modular authorization system with resource-action based permiss
 
 ---
 
+### **Authorization.Rbac**
+
+A comprehensive Role-Based Access Control (RBAC) system that extends Authorization.Core with role management capabilities.
+
+**Key Features:**
+
+- Complete role lifecycle management
+- Role-permission assignment and management
+- User-role assignment with validation
+- Integration with Authorization.Core permissions
+- FluentValidation for comprehensive request validation
+- FastEndpoints API with high-performance endpoints
+
+**Package:** `MasLazu.AspNet.Authorization.Rbac`  
+**Documentation:** [Authorization.Rbac →](./authorization-rbac.md)
+
+---
+
 ### **Verification**
 
 A flexible and secure verification system for email and SMS-based account verification workflows.
@@ -74,23 +92,25 @@ A flexible and secure verification system for email and SMS-based account verifi
 
 ## 📊 Module Comparison
 
-| Feature                | Authentication.Core | Authentication.Password | Authorization.Core     | Verification         |
-| ---------------------- | ------------------- | ----------------------- | ---------------------- | -------------------- |
-| **Primary Purpose**    | JWT-based auth      | Password-based auth     | Permission-based authz | Account verification |
-| **Authentication**     | JWT tokens          | Password + BCrypt       | ❌                     | Verification codes   |
-| **Authorization**      | ❌                  | ❌                      | ✅ Resource-Action     | ❌                   |
-| **User Management**    | ✅ Basic            | ✅ Comprehensive        | ❌                     | ❌                   |
-| **Permission System**  | ❌                  | ❌                      | ✅ Flexible Types      | ❌                   |
-| **Resource Control**   | ❌                  | ❌                      | ✅ Hierarchical        | ❌                   |
-| **Password Security**  | ❌                  | ✅ BCrypt + Policies    | ❌                     | ❌                   |
-| **Email Integration**  | ❌                  | ✅ Optional             | ❌                     | ✅ Required          |
-| **SMS Support**        | ❌                  | ❌                      | ❌                     | ✅                   |
-| **Role Management**    | ✅                  | ❌                      | 🚧 Coming Soon         | ❌                   |
-| **Session Management** | ✅ JWT              | ✅ Database             | ❌                     | ❌                   |
-| **Account Lockout**    | ❌                  | ✅                      | ❌                     | ❌                   |
-| **Clean Architecture** | ✅                  | ✅                      | ✅                     | ✅                   |
-| **Database Required**  | ✅                  | ✅                      | ✅                     | ✅                   |
-| **Best For**           | API authentication  | Web applications        | Access control         | Account verification |
+| Feature                | Authentication.Core | Authentication.Password | Authorization.Core     | Authorization.Rbac  | Verification         |
+| ---------------------- | ------------------- | ----------------------- | ---------------------- | ------------------- | -------------------- |
+| **Primary Purpose**    | JWT-based auth      | Password-based auth     | Permission-based authz | Role-based authz    | Account verification |
+| **Authentication**     | JWT tokens          | Password + BCrypt       | ❌                     | ❌                  | Verification codes   |
+| **Authorization**      | ❌                  | ❌                      | ✅ Resource-Action     | ✅ Role-Permission  | ❌                   |
+| **User Management**    | ✅ Basic            | ✅ Comprehensive        | ❌                     | ❌                  | ❌                   |
+| **Permission System**  | ❌                  | ❌                      | ✅ Flexible Types      | ✅ Role-based       | ❌                   |
+| **Resource Control**   | ❌                  | ❌                      | ✅ Hierarchical        | ✅ Via Roles        | ❌                   |
+| **Role Management**    | ✅                  | ❌                      | ❌                     | ✅ Full CRUD        | ❌                   |
+| **Role Hierarchies**   | ❌                  | ❌                      | ❌                     | ✅ Planned          | ❌                   |
+| **Password Security**  | ❌                  | ✅ BCrypt + Policies    | ❌                     | ❌                  | ❌                   |
+| **Email Integration**  | ❌                  | ✅ Optional             | ❌                     | ❌                  | ✅ Required          |
+| **SMS Support**        | ❌                  | ❌                      | ❌                     | ❌                  | ✅                   |
+| **Session Management** | ✅ JWT              | ✅ Database             | ❌                     | ❌                  | ❌                   |
+| **Account Lockout**    | ❌                  | ✅                      | ❌                     | ❌                  | ❌                   |
+| **Clean Architecture** | ✅                  | ✅                      | ✅                     | ✅                  | ✅                   |
+| **Database Required**  | ✅                  | ✅                      | ✅                     | ✅                  | ✅                   |
+| **Dependencies**       | None                | EmailSender (optional)  | None                   | Authorization.Core  | EmailSender          |
+| **Best For**           | API authentication  | Web applications        | Fine-grained control   | Hierarchical access | Account verification |
 
 ## Module Architecture
 
@@ -182,12 +202,19 @@ dotnet add package MasLazu.AspNet.Verification.Endpoint
 ### For Authorization Control
 
 ```bash
-# Add authorization system
+# Add basic authorization system
 dotnet add package MasLazu.AspNet.Authorization.Core.Abstraction
 dotnet add package MasLazu.AspNet.Authorization.Core.Domain
 dotnet add package MasLazu.AspNet.Authorization.Core
 dotnet add package MasLazu.AspNet.Authorization.Core.EfCore
 dotnet add package MasLazu.AspNet.Authorization.Core.Endpoint
+
+# Add role-based access control (requires Authorization.Core)
+dotnet add package MasLazu.AspNet.Authorization.Rbac.Abstraction
+dotnet add package MasLazu.AspNet.Authorization.Rbac.Domain
+dotnet add package MasLazu.AspNet.Authorization.Rbac
+dotnet add package MasLazu.AspNet.Authorization.Rbac.EfCore
+dotnet add package MasLazu.AspNet.Authorization.Rbac.Endpoint
 ```
 
 ### For Complete User Management
@@ -213,9 +240,9 @@ dotnet add package MasLazu.AspNet.EmailSender.Gmail # or SendGrid
 
 ### 🛡️ Enhanced Authorization
 
-- **Role-Based Access Control (RBAC)** - Role hierarchies and assignments
 - **Page-Based Authorization** - UI-level access control
 - **Conditional Permissions** - Context-based authorization
+- **Permission Templates** - Reusable permission sets
 
 ### 🔑 API Key Management
 

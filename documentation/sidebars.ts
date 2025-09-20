@@ -42,6 +42,7 @@ const sidebars: SidebarsConfig = {
         "modules/authentication-core",
         "modules/authentication-password",
         "modules/authorization-core",
+        "modules/authorization-rbac",
         "modules/verification",
       ],
     },
