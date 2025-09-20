@@ -39,6 +39,24 @@ A secure password-based authentication system with BCrypt hashing and comprehens
 
 ---
 
+### **Authorization.Core**
+
+A comprehensive, modular authorization system with resource-action based permissions and flexible permission types.
+
+**Key Features:**
+
+- Resource-action based permissions
+- Flexible permission type system
+- Hierarchical resource management
+- Action-based access control
+- FastEndpoints API integration
+- Comprehensive validation and testing
+
+**Package:** `MasLazu.AspNet.Authorization.Core`  
+**Documentation:** [Authorization.Core →](./authorization-core.md)
+
+---
+
 ### **Verification**
 
 A flexible and secure verification system for email and SMS-based account verification workflows.
@@ -56,20 +74,23 @@ A flexible and secure verification system for email and SMS-based account verifi
 
 ## 📊 Module Comparison
 
-| Feature                | Authentication.Core | Authentication.Password | Verification         |
-| ---------------------- | ------------------- | ----------------------- | -------------------- |
-| **Primary Purpose**    | JWT-based auth      | Password-based auth     | Account verification |
-| **Authentication**     | JWT tokens          | Password + BCrypt       | Verification codes   |
-| **User Management**    | ✅ Basic            | ✅ Comprehensive        | ❌                   |
-| **Password Security**  | ❌                  | ✅ BCrypt + Policies    | ❌                   |
-| **Email Integration**  | ❌                  | ✅ Optional             | ✅ Required          |
-| **SMS Support**        | ❌                  | ❌                      | ✅                   |
-| **Role Management**    | ✅                  | ❌                      | ❌                   |
-| **Session Management** | ✅ JWT              | ✅ Database             | ❌                   |
-| **Account Lockout**    | ❌                  | ✅                      | ❌                   |
-| **Clean Architecture** | ✅                  | ✅                      | ✅                   |
-| **Database Required**  | ✅                  | ✅                      | ✅                   |
-| **Best For**           | API authentication  | Web applications        | Account verification |
+| Feature                | Authentication.Core | Authentication.Password | Authorization.Core     | Verification         |
+| ---------------------- | ------------------- | ----------------------- | ---------------------- | -------------------- |
+| **Primary Purpose**    | JWT-based auth      | Password-based auth     | Permission-based authz | Account verification |
+| **Authentication**     | JWT tokens          | Password + BCrypt       | ❌                     | Verification codes   |
+| **Authorization**      | ❌                  | ❌                      | ✅ Resource-Action     | ❌                   |
+| **User Management**    | ✅ Basic            | ✅ Comprehensive        | ❌                     | ❌                   |
+| **Permission System**  | ❌                  | ❌                      | ✅ Flexible Types      | ❌                   |
+| **Resource Control**   | ❌                  | ❌                      | ✅ Hierarchical        | ❌                   |
+| **Password Security**  | ❌                  | ✅ BCrypt + Policies    | ❌                     | ❌                   |
+| **Email Integration**  | ❌                  | ✅ Optional             | ❌                     | ✅ Required          |
+| **SMS Support**        | ❌                  | ❌                      | ❌                     | ✅                   |
+| **Role Management**    | ✅                  | ❌                      | 🚧 Coming Soon         | ❌                   |
+| **Session Management** | ✅ JWT              | ✅ Database             | ❌                     | ❌                   |
+| **Account Lockout**    | ❌                  | ✅                      | ❌                     | ❌                   |
+| **Clean Architecture** | ✅                  | ✅                      | ✅                     | ✅                   |
+| **Database Required**  | ✅                  | ✅                      | ✅                     | ✅                   |
+| **Best For**           | API authentication  | Web applications        | Access control         | Account verification |
 
 ## Module Architecture
 
@@ -158,6 +179,17 @@ dotnet add package MasLazu.AspNet.Verification.EfCore
 dotnet add package MasLazu.AspNet.Verification.Endpoint
 ```
 
+### For Authorization Control
+
+```bash
+# Add authorization system
+dotnet add package MasLazu.AspNet.Authorization.Core.Abstraction
+dotnet add package MasLazu.AspNet.Authorization.Core.Domain
+dotnet add package MasLazu.AspNet.Authorization.Core
+dotnet add package MasLazu.AspNet.Authorization.Core.EfCore
+dotnet add package MasLazu.AspNet.Authorization.Core.Endpoint
+```
+
 ### For Complete User Management
 
 ```bash
@@ -179,9 +211,11 @@ dotnet add package MasLazu.AspNet.EmailSender.Gmail # or SendGrid
 
 ## Coming Soon
 
-### 🛡️ Authorization
+### 🛡️ Enhanced Authorization
 
-Advanced authorization with policies, permissions, and role hierarchies.
+- **Role-Based Access Control (RBAC)** - Role hierarchies and assignments
+- **Page-Based Authorization** - UI-level access control
+- **Conditional Permissions** - Context-based authorization
 
 ### 🔑 API Key Management
 
