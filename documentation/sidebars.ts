@@ -44,6 +44,7 @@ const sidebars: SidebarsConfig = {
         "modules/authorization-core",
         "modules/authorization-rbac",
         "modules/verification",
+        "modules/api-key",
       ],
     },
     {

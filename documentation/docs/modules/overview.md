@@ -90,201 +90,51 @@ A flexible and secure verification system for email and SMS-based account verifi
 **Package:** `MasLazu.AspNet.Verification`  
 **Documentation:** [Verification →](./verification.md)
 
+---
+
+### **API Key Management**
+
+A secure API Key Management system for ASP.NET Core applications. Provides key generation, validation, rotation, permission-based access control (using permission IDs), and full CRUD operations. Built with Clean Architecture principles.
+
+**Key Features:**
+
+- Secure API key generation and validation
+- Permission-based access control (permission IDs)
+- Key rotation and revocation
+- Full CRUD for API keys and permission scopes
+- Entity Framework Core integration
+- FluentValidation for request validation
+
+**Package:** `MasLazu.AspNet.ApiKey`  
+**Documentation:** [API Key Management →](./api-key-management.md)
+
+---
+
 ## 📊 Module Comparison
 
-| Feature                | Authentication.Core | Authentication.Password | Authorization.Core     | Authorization.Rbac  | Verification         |
-| ---------------------- | ------------------- | ----------------------- | ---------------------- | ------------------- | -------------------- |
-| **Primary Purpose**    | JWT-based auth      | Password-based auth     | Permission-based authz | Role-based authz    | Account verification |
-| **Authentication**     | JWT tokens          | Password + BCrypt       | ❌                     | ❌                  | Verification codes   |
-| **Authorization**      | ❌                  | ❌                      | ✅ Resource-Action     | ✅ Role-Permission  | ❌                   |
-| **User Management**    | ✅ Basic            | ✅ Comprehensive        | ❌                     | ❌                  | ❌                   |
-| **Permission System**  | ❌                  | ❌                      | ✅ Flexible Types      | ✅ Role-based       | ❌                   |
-| **Resource Control**   | ❌                  | ❌                      | ✅ Hierarchical        | ✅ Via Roles        | ❌                   |
-| **Role Management**    | ✅                  | ❌                      | ❌                     | ✅ Full CRUD        | ❌                   |
-| **Role Hierarchies**   | ❌                  | ❌                      | ❌                     | ✅ Planned          | ❌                   |
-| **Password Security**  | ❌                  | ✅ BCrypt + Policies    | ❌                     | ❌                  | ❌                   |
-| **Email Integration**  | ❌                  | ✅ Optional             | ❌                     | ❌                  | ✅ Required          |
-| **SMS Support**        | ❌                  | ❌                      | ❌                     | ❌                  | ✅                   |
-| **Session Management** | ✅ JWT              | ✅ Database             | ❌                     | ❌                  | ❌                   |
-| **Account Lockout**    | ❌                  | ✅                      | ❌                     | ❌                  | ❌                   |
-| **Clean Architecture** | ✅                  | ✅                      | ✅                     | ✅                  | ✅                   |
-| **Database Required**  | ✅                  | ✅                      | ✅                     | ✅                  | ✅                   |
-| **Dependencies**       | None                | EmailSender (optional)  | None                   | Authorization.Core  | EmailSender          |
-| **Best For**           | API authentication  | Web applications        | Fine-grained control   | Hierarchical access | Account verification |
-
-## Module Architecture
-
-All modules follow a consistent architecture pattern:
+| Feature                | Authentication.Core | Authentication.Password | Authorization.Core     | Authorization.Rbac  | Verification         | API Key Management |
+| ---------------------- | ------------------- | ----------------------- | ---------------------- | ------------------- | -------------------- | ------------------ |
+| **Primary Purpose**    | JWT-based auth      | Password-based auth     | Permission-based authz | Role-based authz    | Account verification | API key-based auth |
+| **Authentication**     | JWT tokens          | Password + BCrypt       | ❌                     | ❌                  | Verification codes   | API keys           |
+| **Authorization**      | ❌                  | ❌                      | ✅ Resource-Action     | ✅ Role-Permission  | ❌                   | ✅ Permission ID   |
+| **User Management**    | ✅ Basic            | ✅ Comprehensive        | ❌                     | ❌                  | ❌                   | ❌                 |
+| **Permission System**  | ❌                  | ❌                      | ✅ Flexible Types      | ✅ Role-based       | ❌                   | ✅ Permission IDs  |
+| **Resource Control**   | ❌                  | ❌                      | ✅ Hierarchical        | ✅ Via Roles        | ❌                   | ❌                 |
+| **Role Management**    | ✅                  | ❌                      | ❌                     | ✅ Full CRUD        | ❌                   | ❌                 |
+| **Role Hierarchies**   | ❌                  | ❌                      | ❌                     | ✅ Planned          | ❌                   | ❌                 |
+| **Password Security**  | ❌                  | ✅ BCrypt + Policies    | ❌                     | ❌                  | ❌                   | ❌                 |
+| **Email Integration**  | ❌                  | ✅ Optional             | ❌                     | ❌                  | ✅ Required          | ❌                 |
+| **SMS Support**        | ❌                  | ❌                      | ❌                     | ❌                  | ✅                   | ❌                 |
+| **Session Management** | ✅ JWT              | ✅ Database             | ❌                     | ❌                  | ❌                   | ✅ Key-based       |
+| **Account Lockout**    | ❌                  | ✅                      | ❌                     | ❌                  | ❌                   | ✅ Key revocation  |
+| **Usage Analytics**    | ❌                  | ❌                      | ❌                     | ❌                  | ❌                   | ❌                 |
+| **Rate Limiting**      | ❌                  | ❌                      | ❌                     | ❌                  | ❌                   | ❌                 |
+| **Key Rotation**       | ❌                  | ❌                      | ❌                     | ❌                  | ❌                   | ✅ Supported       |
+| **Clean Architecture** | ✅                  | ✅                      | ✅                     | ✅                  | ✅                   | ✅                 |
+| **Database Required**  | ✅                  | ✅                      | ✅                     | ✅                  | ✅                   | ✅                 |
+| **Dependencies**       | None                | EmailSender (optional)  | None                   | Authorization.Core  | EmailSender          | None               |
+| **Best For**           | API authentication  | Web applications        | Fine-grained control   | Hierarchical access | Account verification | API access control |
 
 ```
-Module/
-├── Abstraction/          # Interfaces, DTOs, enums
-├── Domain/              # Entities, domain logic
-├── Application/         # Services, validators, business logic
-├── EfCore/             # Data access implementation
-├── Endpoint/           # API endpoints and controllers
-└── Consumer/           # Event consumers (optional)
+
 ```
-
-## Integration Patterns
-
-### 1. Framework Integration
-
-All modules are designed to work seamlessly with the MasLazu.AspNet Framework:
-
-```csharp
-// Program.cs
-builder.Services.AddMasLazuFramework();
-builder.Services.AddMasLazuAuthentication(builder.Configuration);
-builder.Services.AddMasLazuVerification(builder.Configuration);
-```
-
-### 2. Cross-Module Communication
-
-Modules can communicate through:
-
-- **Shared interfaces** - Common contracts in abstractions
-- **Events** - Async messaging with MassTransit
-- **Direct service calls** - When tight coupling is acceptable
-
-### 3. Database Integration
-
-Modules can share databases or use separate ones:
-
-```csharp
-// Shared database approach
-public class AppDbContext : BaseDbContext, IAuthenticationDbContext, IVerificationDbContext
-{
-    // Combined context
-}
-
-// Separate databases approach
-builder.Services.AddMasLazuAuthentication(config => {
-    config.UseDatabase("AuthConnection");
-});
-builder.Services.AddMasLazuVerification(config => {
-    config.UseDatabase("VerificationConnection");
-});
-```
-
-## Module Selection Guide
-
-### For Basic Web APIs
-
-```bash
-# Minimal setup
-dotnet add package MasLazu.AspNet.Framework.Domain
-dotnet add package MasLazu.AspNet.Framework.Application
-dotnet add package MasLazu.AspNet.Framework.EfCore
-dotnet add package MasLazu.AspNet.Framework.Endpoint
-```
-
-### For User Authentication
-
-```bash
-# Add authentication
-dotnet add package MasLazu.AspNet.Authentication.Core.Abstraction
-dotnet add package MasLazu.AspNet.Authentication.Core.Base
-dotnet add package MasLazu.AspNet.Authentication.Core.EfCore
-dotnet add package MasLazu.AspNet.Authentication.Core.Endpoint
-```
-
-### For Email/SMS Verification
-
-```bash
-# Add verification system
-dotnet add package MasLazu.AspNet.Verification.Abstraction
-dotnet add package MasLazu.AspNet.Verification
-dotnet add package MasLazu.AspNet.Verification.EfCore
-dotnet add package MasLazu.AspNet.Verification.Endpoint
-```
-
-### For Authorization Control
-
-```bash
-# Add basic authorization system
-dotnet add package MasLazu.AspNet.Authorization.Core.Abstraction
-dotnet add package MasLazu.AspNet.Authorization.Core.Domain
-dotnet add package MasLazu.AspNet.Authorization.Core
-dotnet add package MasLazu.AspNet.Authorization.Core.EfCore
-dotnet add package MasLazu.AspNet.Authorization.Core.Endpoint
-
-# Add role-based access control (requires Authorization.Core)
-dotnet add package MasLazu.AspNet.Authorization.Rbac.Abstraction
-dotnet add package MasLazu.AspNet.Authorization.Rbac.Domain
-dotnet add package MasLazu.AspNet.Authorization.Rbac
-dotnet add package MasLazu.AspNet.Authorization.Rbac.EfCore
-dotnet add package MasLazu.AspNet.Authorization.Rbac.Endpoint
-```
-
-### For Complete User Management
-
-```bash
-# Full user system (authentication + verification)
-dotnet add package MasLazu.AspNet.Authentication.Core.Abstraction
-dotnet add package MasLazu.AspNet.Authentication.Core.Base
-dotnet add package MasLazu.AspNet.Authentication.Core.EfCore
-dotnet add package MasLazu.AspNet.Authentication.Core.Endpoint
-
-dotnet add package MasLazu.AspNet.Verification.Abstraction
-dotnet add package MasLazu.AspNet.Verification
-dotnet add package MasLazu.AspNet.Verification.EfCore
-dotnet add package MasLazu.AspNet.Verification.Endpoint
-
-# Email sending utility
-dotnet add package MasLazu.AspNet.EmailSender.Abstraction
-dotnet add package MasLazu.AspNet.EmailSender.Gmail # or SendGrid
-```
-
-## Coming Soon
-
-### 🛡️ Enhanced Authorization
-
-- **Page-Based Authorization** - UI-level access control
-- **Conditional Permissions** - Context-based authorization
-- **Permission Templates** - Reusable permission sets
-
-### 🔑 API Key Management
-
-API key generation, rotation, and management system.
-
-### 🔗 OAuth Integration
-
-OAuth 2.0 and OpenID Connect providers integration.
-
-### 👤 Profile Management
-
-Extended user profile management with custom fields and preferences.
-
-## Best Practices
-
-### 1. Module Independence
-
-- Each module should work independently
-- Minimize cross-module dependencies
-- Use events for loose coupling
-
-### 2. Configuration
-
-- Use strongly-typed configuration classes
-- Provide sensible defaults
-- Support environment-specific settings
-
-### 3. Testing
-
-- Each module includes comprehensive tests
-- Use in-memory databases for integration tests
-- Mock external dependencies
-
-### 4. Documentation
-
-- Every module has complete documentation
-- Include setup guides and examples
-- Provide migration guides for updates
-
-## Examples
-
-- [Authentication + Verification Setup](../examples/auth-verification-setup.md)
-- [Custom User Properties](../examples/custom-user-properties.md)
-- [Multi-tenant Authentication](../examples/multi-tenant-auth.md)
-- [Event-driven Architecture](../examples/event-driven-modules.md)

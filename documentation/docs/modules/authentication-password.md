@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Authentication.Password
+# Authentication Password
 
 A secure password-based authentication module that integrates with the MasLazu.AspNet.Authentication.Core framework. This module provides password authentication functionality with BCrypt hashing, user registration, and login capabilities.
 

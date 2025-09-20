@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Authentication.Core
+# Authentication Core
 
 A comprehensive authentication and user management module built on MasLazu.AspNet Framework, providing JWT-based authentication, user profile management, and multi-language support with clean architecture principles.
 

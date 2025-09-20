@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Authorization.Core
+# Authorization Core
 
 A comprehensive, modular authorization system built with .NET 9, designed to provide flexible and scalable access control for ASP.NET Core applications.
 

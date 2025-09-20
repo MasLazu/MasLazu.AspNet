@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Framework.Application
+# Framework Application
 
 The Application layer implements business logic, orchestrates domain operations, and provides the foundation for building robust, maintainable business services with comprehensive CRUD operations, validation, and mapping.
 

@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Framework.Domain
+# Framework Domain
 
 The Domain layer forms the core foundation of MasLazu.AspNet Framework, containing essential domain entities and business logic building blocks that define the fundamental structure of your application.
 

@@ -1,17 +1,5 @@
 ---
 sidebar_position: 5
-title: Authorization RBAC
-description: Role-Based Access Control system for comprehensive user role and permission management
-keywords:
-  [
-    rbac,
-    role-based access control,
-    roles,
-    permissions,
-    authorization,
-    asp.net core,
-    .net 9,
-  ]
 ---
 
 # Authorization RBAC

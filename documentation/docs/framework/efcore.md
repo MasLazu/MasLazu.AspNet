@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Framework.EfCore
+# Framework EfCore
 
 The EfCore layer provides robust Entity Framework Core implementations of the repository pattern with read/write separation, advanced querying capabilities, and optimized database operations for high-performance applications.
 
