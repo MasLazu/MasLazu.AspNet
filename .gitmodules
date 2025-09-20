@@ -19,3 +19,6 @@
 [submodule "modules/MasLazu.AspNet.Authorization.Rbac"]
 	path = modules/MasLazu.AspNet.Authorization.Rbac
 	url = git@github.com:MasLazu/MasLazu.AspNet.Authorization.Rbac.git
+[submodule "modules/MasLazu.AspNet.ApiKey"]
+	path = modules/MasLazu.AspNet.ApiKey
+	url = git@github.com:MasLazu/MasLazu.AspNet.ApiKey.git
