@@ -35,7 +35,8 @@ MasLazu.AspNet/
     ├── MasLazu.AspNet.Authentication.Password/
     ├── MasLazu.AspNet.Authorization.Core/
     ├── MasLazu.AspNet.Authorization.Rbac/
-    └── MasLazu.AspNet.Verification/
+    ├── MasLazu.AspNet.Verification/
+    └── MasLazu.AspNet.ApiKey/
 ```
 
 ## 🏗️ Core Components
@@ -183,12 +184,22 @@ A comprehensive Role-Based Access Control (RBAC) system that extends the Authori
 - Verification status tracking
 - Event-driven verification completion
 
-### 🔑 API Key Management 🚧 **Coming Soon**
+### 🔑 API Key Management
 
-- API key generation and management
+**Location**: `/modules/MasLazu.AspNet.ApiKey/`  
+**Status**: 🚧 In Development
+
+A robust API Key Management system designed to provide secure and scalable API key generation, management, and analytics for ASP.NET Core applications.
+
+**Key Features:**
+
+- API key generation and rotation
 - Scope-based access control
 - Usage tracking and analytics
-- Key rotation and security policies
+- Security policies for key expiration and revocation
+- Integration with Authorization.Core for scope validation
+
+[📖 API Key Management Documentation](modules/MasLazu.AspNet.ApiKey/README.md)
 
 ### 🌐 OAuth Server 🚧 **Coming Soon**
 
@@ -366,6 +377,7 @@ app.Run();
 - [Authorization Core](modules/MasLazu.AspNet.Authorization.Core/README.md) - Flexible authorization system
 - [Authorization RBAC](modules/MasLazu.AspNet.Authorization.Rbac/README.md) - Role-based access control system
 - [Verification System](modules/MasLazu.AspNet.Verification/README.md) - Email/SMS verification
+- [API Key Management](modules/MasLazu.AspNet.ApiKey/README.md) - API key generation and management
 
 ### Guides
 
