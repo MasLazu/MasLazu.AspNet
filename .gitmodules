@@ -22,3 +22,6 @@
 [submodule "modules/MasLazu.AspNet.ApiKey"]
 	path = modules/MasLazu.AspNet.ApiKey
 	url = git@github.com:MasLazu/MasLazu.AspNet.ApiKey.git
+[submodule "utilities/MasLazu.AspNet.Storage"]
+	path = utilities/MasLazu.AspNet.Storage
+	url = git@github.com:MasLazu/MasLazu.AspNet.Storage.git
