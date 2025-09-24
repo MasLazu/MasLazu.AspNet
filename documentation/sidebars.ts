@@ -51,7 +51,11 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Utilities",
       collapsed: false,
-      items: ["utilities/overview", "utilities/emailsender"],
+      items: [
+        "utilities/overview",
+        "utilities/emailsender",
+        "utilities/storage",
+      ],
     },
     {
       type: "category",
