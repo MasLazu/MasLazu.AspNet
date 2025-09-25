@@ -43,6 +43,7 @@ const sidebars: SidebarsConfig = {
         "modules/authentication-password",
         "modules/authorization-core",
         "modules/authorization-rbac",
+        "modules/authorization-page",
         "modules/verification",
         "modules/api-key",
       ],

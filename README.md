@@ -169,12 +169,32 @@ A comprehensive Role-Based Access Control (RBAC) system that extends the Authori
 
 [📖 Authorization RBAC Documentation](modules/MasLazu.AspNet.Authorization.Rbac/README.md)
 
-#### Page-Based Authorization 🚧 **Coming Soon**
+#### Page-Based Authorization ✅ **Available**
 
-- UI-level access control
-- Page grouping and organization
-- Page-specific permission management
-- Navigation security
+**Location**: `/modules/MasLazu.AspNet.Authorization.Page/`  
+**Status**: ✅ Production Ready
+
+A comprehensive page-based authorization system for implementing UI-level access control. Provides hierarchical page management, page grouping, and permission-based navigation security.
+
+**Key Features:**
+
+- Hierarchical page structure with parent-child relationships
+- Page grouping for organization and navigation
+- Page-permission associations for fine-grained access control
+- Full CRUD operations for pages, groups, and permissions
+- Entity Framework Core integration with clean architecture
+- FastEndpoints API with comprehensive validation
+- FluentValidation for all operations
+
+**Core Components:**
+
+- **Pages**: Hierarchical page structure with codes, names, and paths
+- **Page Groups**: Organizational grouping with icons and descriptions
+- **Page Permissions**: Many-to-many relationship between pages and permissions
+- **CRUD Services**: Complete management for all entities
+- **Validation**: FluentValidation for comprehensive request validation
+
+[📖 Page-Based Authorization Documentation](modules/MasLazu.AspNet.Authorization.Page/README.md)
 
 ### ✅ Verification System ✅ **Available**
 
@@ -329,7 +349,7 @@ app.Run();
 - [ ] OpenID Connect module
 - [x] Core Authorization module
 - [x] RBAC module
-- [ ] Page-based Authorization module
+- [x] Page-based Authorization module
 - [x] Verification System module
 
 ### Phase 3: Advanced Features (Planned 📋)
@@ -376,6 +396,7 @@ app.Run();
 - [Authentication Core](modules/MasLazu.AspNet.Authentication.Core/README.md) - Complete authentication system
 - [Authorization Core](modules/MasLazu.AspNet.Authorization.Core/README.md) - Flexible authorization system
 - [Authorization RBAC](modules/MasLazu.AspNet.Authorization.Rbac/README.md) - Role-based access control system
+- [Authorization Page](modules/MasLazu.AspNet.Authorization.Page/README.md) - Page-based authorization system
 - [Verification System](modules/MasLazu.AspNet.Verification/README.md) - Email/SMS verification
 - [API Key Management](modules/MasLazu.AspNet.ApiKey/README.md) - API key generation and management
 
