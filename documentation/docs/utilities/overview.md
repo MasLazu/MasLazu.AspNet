@@ -54,6 +54,67 @@ await _emailSender.SendEmailAsync(email, _htmlRenderer);
 
 ---
 
+### 💾 Storage
+
+**Unified cloud storage abstraction with 13+ providers**
+
+A powerful storage abstraction library that provides a single, consistent API for multiple cloud storage providers including AWS S3, Azure Blob Storage, Google Cloud Storage, and more.
+
+**Key Features:**
+
+- 13+ storage providers supported
+- Single unified `IBlobStorage` interface
+- Dependency injection integration
+- Strongly-typed configuration
+- Built on FluentStorage library
+- Production-ready with validation
+
+**Supported Providers:**
+
+- Amazon S3, MinIO, DigitalOcean Spaces
+- Azure Blob Storage, Data Lake Gen2, Key Vault
+- Google Cloud Storage
+- Local filesystem and in-memory storage
+- FTP, SFTP, ZIP archives
+- Databricks filesystem
+
+**Use Cases:**
+
+- File uploads and downloads
+- Static asset storage and CDN
+- Backup and archival solutions
+- Document management systems
+- Media streaming and processing
+- Cross-cloud data migration
+
+**Quick Start:**
+
+```csharp
+// Configure in appsettings.json
+{
+  "Storage": {
+    "Provider": "S3",
+    "S3": {
+      "AccessKey": "your-key",
+      "SecretKey": "your-secret",
+      "BucketName": "your-bucket",
+      "Region": "us-east-1"
+    }
+  }
+}
+
+// Inject and use
+public class FileService(IBlobStorage storage)
+{
+    public async Task UploadAsync(string fileName, Stream content)
+        => await storage.WriteAsync(fileName, content);
+}
+```
+
+[📖 View Storage Documentation](./storage.md)
+
+---
+
 ## 🏗️ Utility Architecture
 
 ```mermaid
@@ -61,16 +122,20 @@ graph TD
     A[MasLazu.AspNet Framework<br/>Core Components] --> B[Utilities Layer<br/>Independent Tools]
 
     B --> C[EmailSender<br/>📧 Email Communications]
+    B --> D[Storage<br/>💾 Cloud Storage]
 
-    C --> D[EmailSender.Abstraction<br/>Core Interfaces & Models]
-    C --> E[EmailSender.Gmail<br/>Google Workspace Integration]
-    C --> F[EmailSender.SendGrid<br/>Cloud Email Service]
+    C --> E[EmailSender.Abstraction<br/>Core Interfaces & Models]
+    C --> F[EmailSender.Gmail<br/>Google Workspace Integration]
+    C --> G[EmailSender.SendGrid<br/>Cloud Email Service]
 
-    G[Your Application] --> A
-    G --> B
+    D --> H[Storage<br/>Unified API & Configuration]
 
-    H[External Services] --> E
-    H --> F
+    I[Your Application] --> A
+    I --> B
+
+    J[External Services] --> F
+    J --> G
+    J --> H
 
     style A fill:#e1f5fe
     style B fill:#f3e5f5
@@ -80,6 +145,8 @@ graph TD
     style F fill:#f1f8e9
     style G fill:#e0f2f1
     style H fill:#fafafa
+    style I fill:#e0f2f1
+    style J fill:#fafafa
 ```
 
 ## 🎯 Design Principles
