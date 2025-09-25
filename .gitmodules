@@ -25,3 +25,6 @@
 [submodule "utilities/MasLazu.AspNet.Storage"]
 	path = utilities/MasLazu.AspNet.Storage
 	url = git@github.com:MasLazu/MasLazu.AspNet.Storage.git
+[submodule "modules/MasLazu.AspNet.Authorization.Page"]
+	path = modules/MasLazu.AspNet.Authorization.Page
+	url = git@github.com:MasLazu/MasLazu.AspNet.Authorization.Page.git
