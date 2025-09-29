@@ -28,3 +28,6 @@
 [submodule "modules/MasLazu.AspNet.Authorization.Page"]
 	path = modules/MasLazu.AspNet.Authorization.Page
 	url = git@github.com:MasLazu/MasLazu.AspNet.Authorization.Page.git
+[submodule "example"]
+	path = example
+	url = git@github.com:MasLazu/MasLazu.AspNet.Example.git
